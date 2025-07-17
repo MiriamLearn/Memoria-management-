@@ -1,0 +1,145 @@
+/* .user-dialog {
+    direction: rtl;
+    
+    .dialog-title {
+      margin: 0 0 16px 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #2d3748;
+      text-align: center;
+    }
+    
+    .dialog-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 8px 0;
+      
+      .full-width {
+        width: 100%;
+      }
+      
+      .is-invalid {
+        border-color: #e53e3e !important;
+      }
+    }
+    
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-start;
+      padding: 16px 0 0 0;
+      gap: 8px;
+    }
+  }
+  
+
+  ::ng-deep {
+    .mat-mdc-form-field {
+      .mat-mdc-form-field-infix {
+        width: 100%;
+      }
+    }
+  } */
+
+
+
+
+
+
+  .dialog-container {
+    padding: 0;
+    direction: rtl;
+  }
+  
+  .dialog-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 16px;
+  }
+  
+  .dialog-content {
+    padding: 24px 0;
+    min-width: 400px;
+  }
+  
+  .user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    direction: rtl;
+  }
+  
+  .mat-mdc-form-field .mat-mdc-form-field-label {
+    right: 16px;
+    left: auto;
+  }
+  
+  .mat-mdc-input-element {
+    text-align: right;
+    direction: rtl;
+  }
+  
+  .is-invalid {
+    border-color: #f44336 !important;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 16px;
+  }
+  
+  .cancel-btn {
+    color: #666;
+  }
+  
+  .submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .submit-btn:disabled {
+    background: #e0e0e0 !important;
+    color: #999 !important;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .dialog-content {
+      min-width: 300px;
+    }
+  
+    .dialog-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .cancel-btn,
+    .submit-btn {
+      width: 100%;
+    }
+  }
+  
+  /* Form Field Focus Effects */
+  ::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-form-field-outline-thick {
+    color: #667eea !important;
+  }
+  
+  ::ng-deep .mat-mdc-form-field-label.mat-mdc-form-field-label-floating {
+    color: #667eea !important;
+  }
+  

@@ -1,0 +1,299 @@
+<!-- <div class="reports-container">
+
+    <div class="reports-header">
+      <div class="header-title">
+        <h1 class="page-title">דוחות וסטטיסטיקות</h1>
+        <p class="page-description">צפייה בנתונים, גרפים וסטטיסטיקות של המערכת</p>
+      </div>
+      
+      <div class="header-actions">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          (click)="refreshData()"
+          [disabled]="isLoading()">
+          <mat-icon>refresh</mat-icon>
+          רענן נתונים
+        </button>
+        
+        <button 
+          mat-stroked-button 
+          (click)="exportData()">
+          <mat-icon>download</mat-icon>
+          ייצא נתונים
+        </button>
+      </div>
+    </div>
+  
+
+    <div *ngIf="isLoading()" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>טוען נתונים...</p>
+    </div>
+  
+
+    <div *ngIf="!isLoading()" class="stats-grid">
+      <mat-card class="stat-card total-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ totalUsers() }}</h3>
+            <p class="stat-label">סה"כ משתמשים</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card monthly-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>calendar_month</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ usersThisMonth() }}</h3>
+            <p class="stat-label">משתמשים החודש</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card weekly-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>date_range</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ usersThisWeek() }}</h3>
+            <p class="stat-label">משתמשים השבוע</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card average-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ averageUsersPerMonth() }}</h3>
+            <p class="stat-label">ממוצע לחודש</p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <div *ngIf="!isLoading()" class="charts-section">
+
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>מגמת הרשמות משתמשים</mat-card-title>
+          <mat-card-subtitle>צפייה במגמת ההרשמות לאורך זמן</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas 
+              baseChart
+              [data]="usersOverTimeChart()"
+              [options]="lineChartOptions"
+              [type]="lineChartType">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+  
+
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>הרשמות לפי חודש</mat-card-title>
+          <mat-card-subtitle>מספר ההרשמות החדשות בכל חודש</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas 
+              baseChart
+              [data]="usersPerMonthChart()"
+              [options]="barChartOptions"
+              [type]="barChartType">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+
+    <div *ngIf="!isLoading()" class="info-section">
+      <mat-card class="info-card">
+        <mat-card-header>
+          <mat-card-title>מידע נוסף</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="info-grid">
+            <div class="info-item">
+              <mat-icon>schedule</mat-icon>
+              <span>עדכון אחרון: {{ new Date().toLocaleString('he-IL') }}</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>storage</mat-icon>
+              <span>מקור נתונים: מסד נתונים MySQL</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>update</mat-icon>
+              <span>רענון אוטומטי: כל 5 דקות</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div> -->
+
+
+
+  <div class="reports-container">
+    <!-- Header Section -->
+    <div class="reports-header">
+      <div class="header-title">
+        <h1 class="page-title">דוחות וסטטיסטיקות</h1>
+        <p class="page-description">צפייה בנתונים, גרפים וסטטיסטיקות של המערכת</p>
+      </div>
+  
+      <div class="header-actions">
+        <button 
+          mat-raised-button 
+          color="primary" 
+          (click)="refreshData()"
+          [disabled]="isLoading()">
+          <mat-icon>refresh</mat-icon>
+          רענן נתונים
+        </button>
+  
+        <button 
+          mat-stroked-button 
+          (click)="exportData()">
+          <mat-icon>download</mat-icon>
+          ייצא נתונים
+        </button>
+      </div>
+    </div>
+  
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading()" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>טוען נתונים...</p>
+    </div>
+  
+    <!-- Statistics Cards -->
+    <div *ngIf="!isLoading()" class="stats-grid">
+      <mat-card class="stat-card total-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ totalUsers() }}</h3>
+            <p class="stat-label">סה"כ משתמשים</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card monthly-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>calendar_month</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ usersThisMonth() }}</h3>
+            <p class="stat-label">משתמשים החודש</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card weekly-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>date_range</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ usersThisWeek() }}</h3>
+            <p class="stat-label">משתמשים השבוע</p>
+          </div>
+        </div>
+      </mat-card>
+  
+      <mat-card class="stat-card average-users">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+          <div class="stat-info">
+            <h3 class="stat-number">{{ averageUsersPerMonth() }}</h3>
+            <p class="stat-label">ממוצע לחודש</p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  
+    <!-- Charts Section -->
+    <div *ngIf="!isLoading()" class="charts-section">
+      <!-- Line Chart -->
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>מגמת הרשמות משתמשים</mat-card-title>
+          <mat-card-subtitle>צפייה במגמת ההרשמות לאורך זמן</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas 
+              baseChart
+              [data]="usersOverTimeChart()"
+              [options]="lineChartOptions"
+              [type]="lineChartType">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- Bar Chart -->
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>הרשמות לפי חודש</mat-card-title>
+          <mat-card-subtitle>מספר ההרשמות החדשות בכל חודש</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas 
+              baseChart
+              [data]="usersPerMonthChart()"
+              [options]="barChartOptions"
+              [type]="barChartType">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Additional Info Section -->
+    <div *ngIf="!isLoading()" class="info-section">
+      <mat-card class="info-card">
+        <mat-card-header>
+          <mat-card-title>מידע נוסף</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="info-grid">
+            <div class="info-item">
+              <mat-icon>schedule</mat-icon>
+              <span>עדכון אחרון: {{ lastUpdated }}</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>storage</mat-icon>
+              <span>מקור נתונים: מסד נתונים MySQL</span>
+            </div>
+            <div class="info-item">
+              <mat-icon>update</mat-icon>
+              <span>רענון אוטומטי: כל 5 דקות</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

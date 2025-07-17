@@ -1,0 +1,91 @@
+.settings-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .settings-header {
+    margin-bottom: 24px;
+    text-align: right;
+    
+    .settings-title {
+      font-size: 28px;
+      font-weight: 500;
+      margin: 0;
+      color: #333;
+    }
+    
+    .settings-subtitle {
+      font-size: 16px;
+      color: #666;
+      margin: 8px 0 0;
+    }
+  }
+  
+  .settings-card {
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    mat-card-header {
+      padding: 16px 16px 0;
+      
+      mat-card-title {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+    
+    mat-card-content {
+      padding: 16px;
+    }
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      
+      mat-form-field {
+        flex: 1;
+        min-width: 250px;
+      }
+      
+      &.checkbox-row {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-start;
+      margin-top: 8px;
+    }
+  }
+  
+  .button-spinner {
+    margin-right: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .settings-container {
+      padding: 16px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+  

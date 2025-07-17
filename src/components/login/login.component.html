@@ -1,0 +1,178 @@
+<!-- <div class="login-container">
+    <div class="login-background">
+      <div class="login-card-container">
+        <mat-card class="login-card">
+          <mat-card-header class="login-header">
+            <div class="login-logo">
+              <mat-icon class="logo-icon">photo_library</mat-icon>
+            </div>
+            <mat-card-title class="login-title">
+              ניהול תמונות משפחה
+            </mat-card-title>
+            <mat-card-subtitle class="login-subtitle">
+              כניסה לפאנל הניהול
+            </mat-card-subtitle>
+          </mat-card-header>
+  
+          <mat-card-content class="login-content">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>אימייל</mat-label>
+                <input 
+                  matInput 
+                  type="email" 
+                  formControlName="email"
+                  placeholder="הכנס את האימייל שלך"
+                  [class.is-invalid]="email?.invalid && email?.touched">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="email?.invalid && email?.touched">
+                  {{ getEmailErrorMessage() }}
+                </mat-error>
+              </mat-form-field>
+  
+         
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>סיסמה</mat-label>
+                <input 
+                  matInput 
+                  [type]="hidePassword ? 'password' : 'text'"
+                  formControlName="password"
+                  placeholder="הכנס את הסיסמה שלך"
+                  [class.is-invalid]="password?.invalid && password?.touched">
+                <button 
+                  mat-icon-button 
+                  matSuffix 
+                  type="button"
+                  (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="password?.invalid && password?.touched">
+                  {{ getPasswordErrorMessage() }}
+                </mat-error>
+              </mat-form-field>
+  
+           
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit"
+                class="login-button full-width"
+                [disabled]="isLoading">
+                <mat-spinner 
+                  *ngIf="isLoading" 
+                  diameter="20" 
+                  class="login-spinner">
+                </mat-spinner>
+                <span *ngIf="!isLoading">התחבר</span>
+                <span *ngIf="isLoading">מתחבר...</span>
+              </button>
+            </form>
+          </mat-card-content>
+  
+          <mat-card-footer class="login-footer">
+            <p class="footer-text">
+              <mat-icon class="footer-icon">security</mat-icon>
+              גישה מאובטחת למנהלי המערכת בלבד
+            </p>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <div class="login-container">
+    <div class="login-background">
+      <div class="login-card-container">
+        <mat-card class="login-card">
+          <mat-card-header class="login-header">
+            <div class="login-logo">
+              <mat-icon class="logo-icon">photo_library</mat-icon>
+            </div>
+            <mat-card-title class="login-title">
+              ניהול תמונות משפחה
+            </mat-card-title>
+            <mat-card-subtitle class="login-subtitle">
+              כניסה לפאנל הניהול
+            </mat-card-subtitle>
+          </mat-card-header>
+  
+          <mat-card-content class="login-content">
+            <!-- בדיקה שהטופס קיים לפני השימוש בו -->
+            <form *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+              <!-- Email Field -->
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>אימייל</mat-label>
+                <input 
+                  matInput 
+                  type="email" 
+                  formControlName="email"
+                  placeholder="הכנס את האימייל שלך"
+                  [class.is-invalid]="email?.invalid && email?.touched">
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="email?.invalid && email?.touched">
+                  {{ getEmailErrorMessage() }}
+                </mat-error>
+              </mat-form-field>
+  
+              <!-- Password Field -->
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>סיסמה</mat-label>
+                <input 
+                  matInput 
+                  [type]="hidePassword ? 'password' : 'text'"
+                  formControlName="password"
+                  placeholder="הכנס את הסיסמה שלך"
+                  [class.is-invalid]="password?.invalid && password?.touched">
+                <button 
+                  mat-icon-button 
+                  matSuffix 
+                  type="button"
+                  (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="password?.invalid && password?.touched">
+                  {{ getPasswordErrorMessage() }}
+                </mat-error>
+              </mat-form-field>
+  
+              <!-- Submit Button -->
+              <button 
+                mat-raised-button 
+                color="primary" 
+                type="submit"
+                class="login-button full-width"
+                [disabled]="isLoading || !loginForm.valid">
+                <mat-spinner 
+                  *ngIf="isLoading" 
+                  diameter="20" 
+                  class="login-spinner">
+                </mat-spinner>
+                <span *ngIf="!isLoading">התחבר</span>
+                <span *ngIf="isLoading">מתחבר...</span>
+              </button>
+            </form>
+  
+            <!-- Loading state אם הטופס עדיין לא נטען -->
+            <div *ngIf="!loginForm" class="form-loading">
+              <mat-spinner diameter="30"></mat-spinner>
+              <p>טוען...</p>
+            </div>
+          </mat-card-content>
+  
+          <mat-card-footer class="login-footer">
+            <p class="footer-text">
+              <mat-icon class="footer-icon">security</mat-icon>
+              גישה מאובטחת למנהלי המערכת בלבד
+            </p>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
