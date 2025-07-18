@@ -170,3 +170,9 @@ export class DashboardComponent implements OnInit {
     return this.isMobile ? 'over' : 'side';
   }
 }
+
+
+
+
+
+

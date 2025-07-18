@@ -63,13 +63,15 @@ import { HttpClient, type HttpErrorResponse } from "@angular/common/http"
 import { type Observable, throwError } from "rxjs"
 import { catchError, tap } from "rxjs/operators"
 import type { User } from "../models/user/user.module"
+import { environment } from "../environments/environment"
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
   private http = inject(HttpClient)
-  private apiUrl = "http://localhost:5023/api/user"
+  // private apiUrl = "http://localhost:5023/api/user"
+  private apiUrl = `${environment.apiUrl}/user` // עכשיו זה יצביע לשרת ב-Render
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl).pipe(catchError(this.handleError))

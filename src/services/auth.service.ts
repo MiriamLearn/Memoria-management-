@@ -93,17 +93,19 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { LoginRequest, LoginResponse } from '../models/user/user.module';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5023/api'; // עדכני לכתובת השרת שלך
+  // private http = inject(HttpClient);
+  // private apiUrl = 'http://localhost:5023/api'; 
+   private apiUrl = environment.apiUrl
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     try {
       const storedUser = localStorage.getItem('currentUser');
       const user = storedUser ? JSON.parse(storedUser) : null;
