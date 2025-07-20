@@ -150,8 +150,8 @@
       <mat-card-content>
         <!-- Search Field -->
         <div class="search-container">
-          <mat-form-field appearance="outline" class="search-field">
-            <mat-label>חיפוש משתמשים</mat-label>
+          <mat-form-field appearance="outline" class="search-field" dir="rtl">
+            <mat-label>חיפוש משתמשים </mat-label>
             <input matInput 
                    placeholder="חפש לפי שם או אימייל"
                    (input)="onSearchChange($event)"
@@ -247,7 +247,7 @@
   
           <!-- Paginator -->
           @if (totalUsers() > 0) {
-            <mat-paginator 
+            <mat-paginator dir="rtl"
               [length]="totalUsers()"
               [pageSize]="pageSize()"
               [pageSizeOptions]="pageSizeOptions"
